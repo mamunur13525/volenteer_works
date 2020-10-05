@@ -1,0 +1,25 @@
+.navbar{
+    padding:0px 40px;
+}
+.mainLogo{
+    width: 170px;
+}
+.navbar-nav .nav-item {
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+.register-btn, .admin-btn{
+    font-weight: 400;
+    font-size: 18px;
+    margin-right:  0px!important;
+
+    padding: 5px 40px;
+}
+img.profile_pic {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

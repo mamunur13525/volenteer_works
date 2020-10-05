@@ -1,0 +1,40 @@
+.mainLogo{
+    width: 220px;
+    margin:50px auto;
+}
+.loginBox{
+    border: 1px solid rgb(133 132 132 / 17%);
+    width: 500px;
+    margin: 20px auto 0px;
+    padding: 150px 45px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px #0000002e;
+}
+.loginBox h3{
+    color: black;
+    font-weight: bold;
+}
+.continue_google_box{
+    border:1px solid rgba(143, 143, 143, 0.459);
+    padding:8px;
+    border-radius: 35px;
+    margin-top: 25px;
+    cursor:pointer;
+}
+.continue_google_box span{
+    font-weight: 500;
+}
+.continue_google_box img{
+    float: left;
+}
+.google_logo{
+    width: 27px;
+}
+.create_account a{
+    text-decoration: underline;
+    font-weight: 500;
+    margin-left: 6px;
+}
+.create_account{
+    margin-top: 10px;
+}
