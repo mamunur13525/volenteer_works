@@ -24,6 +24,9 @@ const Home = () => {
 
     return (
         <div>
+
+
+            
            <div className="first_section">
             <div className="background">
                 </div>

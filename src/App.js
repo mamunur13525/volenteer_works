@@ -54,7 +54,7 @@ function App() {
 
 
           <Route path="/login">
-             <p>Name: {loggedInUser.displayName}</p>
+            
             <Login></Login>
           </Route>
 

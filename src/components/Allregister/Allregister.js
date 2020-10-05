@@ -7,12 +7,26 @@ import { UserContext } from '../../App';
 const Allregister = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [registerUser , setRegisterUser] = useState([])
-    console.log(loggedInUser.email)
+
    useEffect(()=>{
     fetch(`http://localhost:5050/registerUser/${loggedInUser.email}`)
     .then(res => res.json())
     .then(data => setRegisterUser(data))
    },[])
+
+ 
+const removeDocument= ( id)=>{
+
+        fetch(`http://localhost:5050/deleteregister/${id}` , {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+              }
+        })
+        .then(res => res.json())
+        .then(data => (data == true)?alert('register remove'): console.log())
+}
+
     return (
         <div>
             <Header></Header>
@@ -29,7 +43,7 @@ const Allregister = () => {
                                         <div className="text">
                                             <h3>{register.registerName}</h3> 
                                              <span>{register.date}</span>
-                                            <button className="btn btn-secondary">Cancel</button>
+                                            <button onClick={removeDocument( register._id)} className="btn btn-secondary">Cancel</button>
                                         </div> 
                                 </div>
                         
