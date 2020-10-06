@@ -12,12 +12,12 @@ const Register = () => {
    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
    const [result, setResult ] = useState({count : false})
 
-   const users = JSON.parse(sessionStorage.getItem('loginUser'))
-console.log(users.email)
+   
+
    const { register, handleSubmit } = useForm();
     const onSubmit = formData => {
         const dataform = {...formData, photoId: loggedInUser.photoId}
-        console.log(dataform)
+  
         fetch('http://localhost:5050/addregister',{
             method: "POST",
             headers: {
