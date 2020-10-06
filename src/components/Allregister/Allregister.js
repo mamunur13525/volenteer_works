@@ -7,6 +7,8 @@ import { UserContext } from '../../App';
 const Allregister = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [registerUser , setRegisterUser] = useState([])
+    const [deleted , setDeleted] = useState({})
+
 
    useEffect(()=>{
     fetch(`http://localhost:5050/registerUser/${loggedInUser.email}`)
@@ -15,16 +17,26 @@ const Allregister = () => {
    },[])
 
  
-const removeDocument= ( id)=>{
+   const removeDocument= (event, id)=>{
 
-        fetch(`http://localhost:5050/deleteregister/${id}` , {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-              }
-        })
-        .then(res => res.json())
-        .then(data => (data == true)?alert('register remove'): console.log())
+    fetch(`http://localhost:5050/deleteregister/${id}` , {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+    })
+    .then(res => res.json())
+    .then(data =>{
+      
+        if(data){ 
+            setDeleted(data.ok>0)
+        }
+    })
+    if(deleted){
+        event.target.parentNode.style.display = 'none';
+    }
+            
+  
 }
 
     return (
@@ -36,14 +48,16 @@ const removeDocument= ( id)=>{
                 registerUser.map(register =>
                         
                             <div className="col-md-6 ">
-                                <div className="allregister_box d-flex">
-                                    <div className="img">
+                                 <button onClick={(event)=>removeDocument(event,register._id)} className="btn btn-secondary" id="buttons">Cancel</button>
+                                <div className="allregister_box ">
+                                
+                                         <div className="img">
                                         <img className={"humanity_hand"} src={register.photoId} alt=""/>
                                         </div>
                                         <div className="text">
                                             <h3>{register.registerName}</h3> 
                                              <span>{register.date}</span>
-                                            <button onClick={removeDocument( register._id)} className="btn btn-secondary">Cancel</button>
+                                           
                                         </div> 
                                 </div>
                         

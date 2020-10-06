@@ -15,23 +15,24 @@ firebase.initializeApp(firebaseConfig);
 
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+
     const location = useLocation();
     const history = useHistory();
+   
 
-    const {from} = location.state;
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
- 
+    console.log(loggedInUser)
    const googleClick =()=>{
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider).then(function(result) {
+            console.log(result.user.email)
         // The signed-in user info.
         const {displayName, photoURL ,email} = result.user;
         const user = {...loggedInUser, displayName,photoURL,email}
         sessionStorage.setItem('loginUser', JSON.stringify(user))
         setLoggedInUser(user)
- 
             if(loggedInUser.title){
-                history.replace(from)
+                history.replace(location.state.from)
             }else{
                 history.replace('/')
             }
@@ -47,7 +48,6 @@ const Login = () => {
    }
  
 
-
     return (
         <div className="text-center">
                 <img className="mainLogo" src={mainLogo} alt=""/>
@@ -57,7 +57,7 @@ const Login = () => {
                         <img className="google_logo" src={google_img} alt=""/>
                         <span>Continue With Google</span>
                     </div>
-                   <p className="create_account">Don't have an account?<a href="#">Create an account</a></p>
+                   <p className="create_account">Don't have an account?<span href="#">Create an account</span></p> 
                 </div>
         </div>
     );

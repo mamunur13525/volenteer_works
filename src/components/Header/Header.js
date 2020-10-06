@@ -11,39 +11,39 @@ const Header = () => {
     return (
         <div>
              
-                    <nav class="navbar navbar-expand-lg navbar-light ">
+                    <nav className="navbar navbar-expand-lg navbar-light ">
                     <div className="container">
-                    <img class="mainLogo" src={mainLogo} alt=""/>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <img className="mainLogo" src={mainLogo} alt=""/>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <Link to="/home">  <a class="nav-link" href="#">Home</a></Link>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item active">
+                                <Link to="/home">  <span className="nav-link" href="#">Home</span></Link>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Donation</a>
+                            <li className="nav-item">
+                            <span className="nav-link" href="#">Donation</span>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Events</a>
+                            <li className="nav-item">
+                            <span className="nav-link" href="#">Events</span>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Blog</a>
+                            <li className="nav-item">
+                            <Link to='/login'><span className="nav-link" href="#">Login</span></Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 
                                 {
-                                (loggedInUser.email)?'':<button class="btn btn-primary register-btn">Register</button>
+                                (loggedInUser.email)?'':<button className="btn btn-primary register-btn">Register</button>
                              }
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                             {
-                                (loggedInUser.email)?<img className="profile_pic" src={loggedInUser.photoURL}/>:<span></span> 
+                                loggedInUser.email ? <img className="profile_pic" src={loggedInUser.photoURL}/>:<span></span> 
                              }
                              {
-                                (loggedInUser.email)?loggedInUser.displayName: <button class="btn btn-secondary register-btn">Register</button> 
+                                loggedInUser.email ? loggedInUser.displayName: <button className="btn btn-secondary register-btn">Register</button> 
                              }
                             </li>
                         </ul>

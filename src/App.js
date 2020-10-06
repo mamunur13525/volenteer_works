@@ -27,7 +27,6 @@ function App() {
     <UserContext.Provider value={ [loggedInUser, setLoggedInUser] }>
   
       <Router>
-      <div>
 
         <Switch> 
 
@@ -41,29 +40,28 @@ function App() {
             <Home />
           </Route>
 
-           
-          <PrivateRoute path="/register">
-
-              <Register></Register>
-
-            </PrivateRoute>  
-
-            <Route path="/allregister">
-              <Allregister></Allregister>
-            </Route>
-
-
           <Route path="/login">
             
             <Login></Login>
           </Route>
+          <Route path="/allregister">
+              <Allregister></Allregister>
+            </Route>
+
+          <PrivateRoute path="/register">
+              <Register></Register>
+          </PrivateRoute>  
+
+          
+
+        
 
           <Route  path="*">
                 <h1>PAGE NOT FOUND!!</h1>
           </Route>
 
         </Switch>
-      </div>
+   
     </Router>
   </UserContext.Provider>
   );
