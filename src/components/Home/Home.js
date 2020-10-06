@@ -10,7 +10,7 @@ const Home = () => {
     const [valunteer, setValunteer] = useState([])
     
     useEffect(()=>{
-        fetch('http://localhost:5050/allValunteer')
+        fetch('https://damp-lake-82353.herokuapp.com/allValunteer')
         .then(res => res.json())
         .then(data => setValunteer(data))
 

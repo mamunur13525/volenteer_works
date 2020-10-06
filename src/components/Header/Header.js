@@ -26,11 +26,12 @@ const Header = () => {
                             <li className="nav-item">
                             <span className="nav-link" href="#">Donation</span>
                             </li>
+                            
                             <li className="nav-item">
-                            <span className="nav-link" href="#">Events</span>
-                            </li>
-                            <li className="nav-item">
-                            <Link to='/login'><span className="nav-link" href="#">Login</span></Link>
+                                {
+                                    loggedInUser.email ?<span></span>:<Link to='/login'><span className="nav-link" href="#">Login</span></Link>
+
+                                }
                             </li>
                           
                             <li className="nav-item">

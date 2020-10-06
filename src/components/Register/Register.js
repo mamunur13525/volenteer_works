@@ -18,7 +18,7 @@ const Register = () => {
     const onSubmit = formData => {
         const dataform = {...formData, photoId: loggedInUser.photoId}
   
-        fetch('http://localhost:5050/addregister',{
+        fetch('https://damp-lake-82353.herokuapp.com/addregister',{
             method: "POST",
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -43,16 +43,16 @@ const Register = () => {
                     <h3>Register as a Volunteer</h3>
                    <div className="input_box">
                         <form  onSubmit={handleSubmit(onSubmit)}>
-                            <input ref={register} placeholder="Full Name" value={user.displayName} type="text" name="name" id="name"/><br/>
-                            <input ref={register} placeholder="Username or Email" value={user.email} type="email" name="email" id="email"/><br/>
-                            <inpu ref={register} value={loggedInUser.photoId} type="text" className="d-none"/>
+                            <input ref={register} placeholder="Full Name" value={user.displayName} type="text" name="name" id="name" required/><br/>
+                            <input ref={register} placeholder="Username or Email" value={user.email} type="email" name="email" id="email" required/><br/>
+                            <inpu ref={register} value={loggedInUser.photoId} type="text" className="d-none" required/>
 
 
-                            <input ref={register}  type="date" name="date" id="dateofbirth"/>
+                            <input ref={register}  type="date" name="date" id="dateofbirth" required/>
 
-                            <input ref={register}  placeholder="Write Some Description" type="text" name="description" id=""/><br/>
-                            <input  ref={register} className="btn_last" value={loggedInUser.title} type="text" name="registerName" id=""/><br/>
-                            <input value="Registration" className="btn  btn-primary" type="submit" name="submit" id="submit"/>
+                            <input ref={register}  placeholder="Write Some Description" type="text" name="description" id="" required/><br/>
+                            <input  ref={register} className="btn_last" value={loggedInUser.title} type="text" name="registerName" id="" required/><br/>
+                            <input value="Registration" className="btn  btn-primary" type="submit" name="submit" id="submit" />
                         </form>
                     </div> 
                 </div>

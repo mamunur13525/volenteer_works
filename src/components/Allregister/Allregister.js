@@ -11,7 +11,7 @@ const Allregister = () => {
 
 
    useEffect(()=>{
-    fetch(`http://localhost:5050/registerUser/${loggedInUser.email}`)
+    fetch(`https://damp-lake-82353.herokuapp.com/registerUser/${loggedInUser.email}`)
     .then(res => res.json())
     .then(data => setRegisterUser(data))
    },[])
@@ -19,7 +19,7 @@ const Allregister = () => {
  
    const removeDocument= (event, id)=>{
 
-    fetch(`http://localhost:5050/deleteregister/${id}` , {
+    fetch(`https://damp-lake-82353.herokuapp.com/deleteregister/${id}` , {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
