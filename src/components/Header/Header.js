@@ -32,12 +32,7 @@ const Header = () => {
                             <li className="nav-item">
                             <Link to='/login'><span className="nav-link" href="#">Login</span></Link>
                             </li>
-                            <li className="nav-item">
-                                
-                                {
-                                (loggedInUser.email)?'':<button className="btn btn-primary register-btn">Register</button>
-                             }
-                            </li>
+                          
                             <li className="nav-item">
                             {
                                 loggedInUser.email ? <img className="profile_pic" src={loggedInUser.photoURL}/>:<span></span> 

@@ -21,11 +21,11 @@ const Login = () => {
     const history = useHistory();
    
 
-    console.log(loggedInUser)
+ 
    const googleClick =()=>{
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider).then(function(result) {
-            console.log(result.user.email)
+           
         // The signed-in user info.
         const {displayName, photoURL ,email} = result.user;
         const user = {...loggedInUser, displayName,photoURL,email}
