@@ -17,12 +17,12 @@
 
 
 
-### __Front-End Technology_:
+### __Front-End Technology__:
 *	React
 * React Router
 * Bootstrap
 
-### _Back-End Technology:__ 
+### __Back-End Technology:__ 
 *	Node.js
 * Express.jsies 
 * MongoDB
