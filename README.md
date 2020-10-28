@@ -5,7 +5,7 @@
  
 ![alt text](https://i.ibb.co/Xt9hz4h/Volunteer-Works.png)
 
-### Project Description
+### Features
 *	Registered user can choose volunteer activities
 * Registered user see his activities and remove his activities 
 * Login & logout authentication system.
@@ -17,7 +17,15 @@
 
 
 
-__Technology:__ React, React Router, Bootstrap, Node.js, Express.js, FirebaseAuthentication-Hosting,MongoDB, Heroku Backend deploy.
-         
+### __Front-End Technology:__ , , , , FirebaseAuthentication-Hosting,, .
+*	React
+* React Router
+* Bootstrap
 
+### Back-End Technology:__ React, React Router, Bootstrap, Node.js, Express.js, FirebaseAuthentication-Hosting,MongoDB, Heroku Backend deploy.
+*	Node.js
+* Express.jsies 
+* MongoDB
+* Firebase Athuentication
+* Heroku Backend deploy.
 
