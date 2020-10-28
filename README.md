@@ -17,12 +17,12 @@
 
 
 
-### __Front-End Technology:__ , , , , FirebaseAuthentication-Hosting,, .
+### __Front-End Technology:__ 
 *	React
 * React Router
 * Bootstrap
 
-### Back-End Technology:__ React, React Router, Bootstrap, Node.js, Express.js, FirebaseAuthentication-Hosting,MongoDB, Heroku Backend deploy.
+### Back-End Technology:__ 
 *	Node.js
 * Express.jsies 
 * MongoDB
