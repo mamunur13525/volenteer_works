@@ -17,7 +17,7 @@
 
 
 
-### __Front-End Technology:__ 
+### __Front-End Technology:
 *	React
 * React Router
 * Bootstrap
