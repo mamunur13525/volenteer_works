@@ -3,8 +3,9 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import { VolentireData } from "./fakeData";
-import spinner from "../../images/icon/spinner.gif";
+// import spinner from "../../images/icon/spinner.gif";
 import { useForm } from "react-hook-form";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const { register, handleSubmit } = useForm();
@@ -32,7 +33,6 @@ const Home = () => {
       <div className="first_section">
         <div className="background"></div>
         <h1 className="text-center">i grow by helping people in need.</h1>
-
         <div className="search">
           <div className="row">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +52,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <div className="second_section">
         <div className="container">
           <div className="row justify-content-center">
@@ -67,11 +66,15 @@ const Home = () => {
                 }
               })
               .map((volentire, ind) => (
-                <div key={ind} id={volentire._id} className="col-lg-3 col-md-6 col-sm-12">
+                <div
+                  key={ind}
+                  id={volentire._id}
+                  className="col-lg-3 col-md-6 col-sm-12"
+                >
                   <div
                     onClick={handleClick}
                     className="card"
-                    style={{ width: "18rem",margin:'auto' }}
+                    style={{ width: "18rem", margin: "auto" }}
                   >
                     <Link id={volentire._id} to="/register">
                       <img
@@ -94,6 +97,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

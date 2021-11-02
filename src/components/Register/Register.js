@@ -2,19 +2,19 @@ import React, { useContext, useState } from "react";
 import "./Register.css";
 
 import mainLogo from "../../mainLogo.png";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { UserContext } from "../../App";
 import { useForm } from "react-hook-form";
+import { createNotification } from "../Shared/Notify";
 
 const Register = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [loggedInUser] = useContext(UserContext);
   const [result, setResult] = useState({ count: false });
-
   const { register, handleSubmit } = useForm();
+  const { email, displayName } = JSON.parse(localStorage.getItem("userInfo"));
   const onSubmit = (formData) => {
     const dataform = { ...formData, photoId: loggedInUser.photoId };
-
-    fetch("https://damp-lake-82353.herokuapp.com/addregister", {
+    fetch("http://localhost:5000/addregister", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -24,94 +24,106 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         setResult(data);
-      });
+        createNotification('success','Successfully','Register as a Valunteer')
+      }).catch(err=> createNotification('error','Failed','Proceed'))
   };
 
-  const user = JSON.parse(sessionStorage.getItem("loginUser"));
-
+  console.log({ loggedInUser });
   return (
     <div className="text-center">
-      <Link to='/'>
-      <img className="mainLogo" src={mainLogo} alt="" />
+      <Link to="/">
+        <img className="mainLogo" src={mainLogo} alt="" />
       </Link>
-      <div className="register_box">
-        <h3>Register as a Volunteer</h3>
-        <div className="input_box">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-              ref={register}
-              placeholder="Full Name"
-              value={user.displayName}
-              type="text"
-              name="name"
-              id="name"
-              onChange={console.log} 
-              required
-            />
-            <br />
-            <input
-              ref={register}
-              placeholder="Username or Email"
-              value={user.email}
-              type="email"
-              name="email"
-              id="email"
-              onChange={console.log} 
-              required
-            />
-            <br />
-            <input
-              ref={register}
-              value={loggedInUser.photoId}
-              type="text"
-              className="d-none"
-              onChange={console.log} 
-              required
-            />
+      <div className="d-flex justify-content-center">
+        {loggedInUser.photoId && (
+          <div
+            style={{
+              background: `url(${loggedInUser.photoId})`,
+            }}
+            className="left_side"
+          ></div>
+        )}
+        <div className="register_box register_bg right_side">
+          <h3>Register as a Volunteer</h3>
+          <div className="input_box">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <input
+                className="input_feild"
+                ref={register}
+                placeholder="Full Name"
+                value={displayName}
+                type="text"
+                name="name"
+                id="name"
+                onChange={console.log}
+                required
+              />
 
-            <input
-              ref={register}
-              type="date"
-              name="date"
-              id="dateofbirth"
-              required
-            />
+              <input
+                className="input_feild"
+                ref={register}
+                placeholder="Username or Email"
+                value={email}
+                type="email"
+                name="email"
+                id="email"
+                onChange={console.log}
+                required
+              />
 
-            <input
-              ref={register}
-              placeholder="Write Some Description"
-              type="text"
-              name="description"
-              id=""
-              required
-            />
-            <br />
-            <input
-              ref={register}
-              className="btn_last"
-              value={loggedInUser.title}
-              type="text"
-              name="registerName"
-              id=""
-              onChange={console.log} 
-              required
-            />
-            <br />
-            <input
-              value="Registration"
-              className="btn  btn-primary"
-              type="submit"
-              name="submit"
-              id="submit"
-            />
-          </form>
+              <input
+                ref={register}
+                value={loggedInUser.photoId}
+                type="text"
+                className="d-none input_feild"
+                onChange={console.log}
+                required
+              />
+
+              <input
+                className="input_feild"
+                ref={register}
+                type="date"
+                name="date"
+                id="dateofbirth"
+                required
+              />
+
+              <input
+                className="input_feild"
+                ref={register}
+                placeholder="Write Some Description"
+                type="text"
+                name="description"
+                required
+              />
+
+              <input
+                ref={register}
+                className="btn_last input_feild"
+                value={loggedInUser.title}
+                type="text"
+                name="registerName"
+                onChange={console.log}
+                required
+              />
+
+              <input
+                value="Registration"
+                className="btn  btn-primary"
+                type="submit"
+                name="submit"
+                id="submit"
+              />
+            </form>
+          </div>
         </div>
       </div>
 
       {result.insertedCount > 0 ? (
-        <Redirect to="/allregister"></Redirect>
+        <Redirect to="/allregister" />
       ) : (
-        <Redirect to="/register"></Redirect>
+        <Redirect to="/register" />
       )}
     </div>
   );
