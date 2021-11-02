@@ -3,7 +3,7 @@ import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="bg-dark p-4 row">
+    <div className="bg-dark p-4 row m-0">
       <div className="d-flex container  align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <p className="mb-0 text-white mr-3">Connect with me:</p>

@@ -1,66 +1,63 @@
-
-h1{
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 30px;
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
 }
-
 
 .search {
-    
-    padding: 5px 0;
-    width: 500px;
-    height: 30px;
-    position: relative;
-    left: 10px;
-    margin:15px auto 100px;
-
-
+  padding: 5px 0;
+  width: 500px;
+  height: 30px;
+  position: relative;
+  margin: 15px auto 100px;
 }
 
-    .search input {
-        padding: 22px;
-        border-radius:5px;
-    }
-
-
+.search input {
+  padding: 22px;
+  border-radius: 5px;
+}
 
 .search_btn {
-    width: 100px;
-    position: absolute;
-    right: 0;
-    top: 5px;
-    padding:10px;
-    border-radius:1px 5px 5px 0px;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  padding: 10px;
+  border-radius: 1px 5px 5px 0px;
 }
-.background{
-    position: absolute;
-    height: 65vh;
-    width:100%;
-    top:0;
-    z-index: -999999999;
-    background-image: url('https://cdn.vox-cdn.com/thumbor/smmpCSz2tHdZ5_tydiI_9kAOoko=/0x0:1200x814/1200x800/filters:focal(504x311:696x503)/cdn.vox-cdn.com/uploads/chorus_image/image/64494240/1072361.0.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0px -108px;
-    opacity: .1;
+.background {
+  position: absolute;
+  height: 65vh;
+  width: 100%;
+  top: 0;
+  z-index: -999999999;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/smmpCSz2tHdZ5_tydiI_9kAOoko=/0x0:1200x814/1200x800/filters:focal(504x311:696x503)/cdn.vox-cdn.com/uploads/chorus_image/image/64494240/1072361.0.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px -108px;
+  opacity: 0.1;
 }
-.card-body{
-    padding:0;
+.card-body {
+  padding: 0;
+}
 
+.card {
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+}
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+}
+.card-text {
+  padding: 20px;
+  color: white;
+  border-radius: 0px 0px 10px 10px;
 }
 
-.card{
-    border-radius:10px;
-    padding:10px;
-    border:none;
-    background: transparent;
-}
-.card-img-top{
-    border-radius: 10px 10px 0 0;
-}
-.card-text{
-    padding: 20px;
-    color:white;
-    border-radius:0px 0px 10px 10px;
+@media (max-width: 920px) {
+  .search {
+    width: 90%;
+  }
 }

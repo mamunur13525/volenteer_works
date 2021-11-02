@@ -2,22 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
-import { VolentireData } from "./fakeData";
-// import spinner from "../../images/icon/spinner.gif";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer";
-
+import spinner from "../../images/icon/spinner.gif";
 const Home = () => {
   const { register, handleSubmit } = useForm();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [valunteer, setValunteer] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
-    setValunteer(VolentireData);
-    // fetch("https://damp-lake-82353.herokuapp.com/allValunteer")
-    //   .then((res) => res.json())
-    //   .then((data) => setValunteer(data))
-    //   .catch((err) => console.log(err));
+    fetch("http://localhost:5000/allValunteer")
+      .then((res) => res.json())
+      .then((data) => setValunteer(data))
+      .catch((err) => console.log(err));
   }, []);
   const handleClick = (event) => {
     const title = event.target.alt;
@@ -33,8 +30,8 @@ const Home = () => {
       <div className="first_section">
         <div className="background"></div>
         <h1 className="text-center">i grow by helping people in need.</h1>
-        <div className="search">
-          <div className="row">
+        <div className="d-flex justify-content-center">
+          <div className="search">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="search">
                 <input
@@ -55,6 +52,12 @@ const Home = () => {
       <div className="second_section">
         <div className="container">
           <div className="row justify-content-center">
+            {JSON.stringify(valunteer) === "[]" && (
+              <div className="d-flex justify-content-center flex-column align-items-center mb-5" >
+                <img style={{width:'4rem'}} src={spinner} alt="spinner" />
+                <h3 className="text-center mt-3">Loading</h3>
+              </div>
+            )}
             {valunteer
               .filter((item) => {
                 if (searchValue === "") {
@@ -97,7 +100,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
