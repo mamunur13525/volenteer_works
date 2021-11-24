@@ -46,11 +46,11 @@ const Login = () => {
 
   return (
     <div className="text-center">
-      <img className="mainLogo" src={mainLogo} alt="" />
+      <img loading='lazy' className="mainLogo" src={mainLogo} alt="" />
       <div className="loginBox">
         <h3>Login With</h3>
         <div onClick={googleClick} className="continue_google_box">
-          <img className="google_logo" src={google_img} alt="" />
+          <img loading='lazy' className="google_logo" src={google_img} alt="" />
           <span>Continue With Google</span>
         </div>
         <p className="create_account">

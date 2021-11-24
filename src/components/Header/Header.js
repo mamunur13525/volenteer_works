@@ -24,7 +24,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container">
           <Link to='/home'>
-            <img className="mainLogo" src={mainLogo} alt="" />
+            <img loading='lazy' className="mainLogo" src={mainLogo} alt="" />
           </Link>
           <button
             className="navbar-toggler"
@@ -66,6 +66,7 @@ const Header = () => {
               <li className="nav-item">
                 {userInfo.email ? (
                   <img
+                  loading='lazy'
                     className="profile_pic"
                     src={userInfo.photoURL}
                     alt="profile_img"

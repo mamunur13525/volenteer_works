@@ -11,7 +11,7 @@ const Home = () => {
   const [valunteer, setValunteer] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/allValunteer")
+    fetch("https://voleenter-works.herokuapp.com/allValunteer")
       .then((res) => res.json())
       .then((data) => setValunteer(data))
       .catch((err) => console.log(err));
@@ -35,7 +35,7 @@ const Home = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="search">
                 <input
-                  type="text"
+                  type="search"
                   className="form-control "
                   placeholder="Search"
                   name="search"
@@ -53,50 +53,69 @@ const Home = () => {
         <div className="container">
           <div className="row justify-content-center">
             {JSON.stringify(valunteer) === "[]" && (
-              <div className="d-flex justify-content-center flex-column align-items-center mb-5" >
-                <img style={{width:'4rem'}} src={spinner} alt="spinner" />
+              <div className="d-flex justify-content-center flex-column align-items-center mb-5">
+                <img
+                  loading="lazy"
+                  style={{ width: "4rem" }}
+                  src={spinner}
+                  alt="spinner"
+                />
                 <h3 className="text-center mt-3">Loading</h3>
               </div>
             )}
-            {valunteer
-              .filter((item) => {
-                if (searchValue === "") {
-                  return item;
-                } else if (
-                  item.name.toLowerCase().includes(searchValue.toLowerCase())
-                ) {
-                  return item;
-                }
-              })
-              .map((volentire, ind) => (
-                <div
-                  key={ind}
-                  id={volentire._id}
-                  className="col-lg-3 col-md-6 col-sm-12"
-                >
+            {valunteer.filter((item) => {
+              if (searchValue === "") {
+                return item;
+              } else if (
+                item.name.toLowerCase().includes(searchValue.toLowerCase())
+              ) {
+                return item;
+              }
+            }).length === 0 && searchValue !== "" ? (
+              <p>No Search Found!</p>
+            ) : (
+              valunteer
+                .filter((item) => {
+                  if (searchValue === "") {
+                    return item;
+                  } else if (
+                    item.name.toLowerCase().includes(searchValue.toLowerCase())
+                  ) {
+                    return item;
+                  }
+                })
+                .map((volentire, ind) => (
                   <div
-                    onClick={handleClick}
-                    className="card"
-                    style={{ width: "18rem", margin: "auto" }}
+                    key={ind}
+                    id={volentire._id}
+                    className="col-lg-3 col-md-6 col-sm-12"
                   >
-                    <Link id={volentire._id} to="/register">
-                      <img
-                        src={volentire.image}
-                        className="card-img-top"
-                        alt={volentire.name}
-                      />
-                      <div className="card-body">
-                        <h5
-                          style={{ background: "tomato" }}
-                          className="card-text"
-                        >
-                          {volentire.name}
-                        </h5>
-                      </div>
-                    </Link>
+                    {console.log({ volentire })}
+                    <div
+                      onClick={handleClick}
+                      className="card"
+                      style={{ width: "18rem", margin: "auto" }}
+                    >
+                      <Link id={volentire._id} to="/register">
+                        <img
+                          loading="lazy"
+                          src={volentire.image}
+                          className="card-img-top"
+                          alt={volentire.name}
+                        />
+                        <div className="card-body">
+                          <h5
+                            style={{ background: "tomato" }}
+                            className="card-text"
+                          >
+                            {volentire.name}
+                          </h5>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+            )}
           </div>
         </div>
       </div>

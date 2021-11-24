@@ -11,10 +11,10 @@ const Register = () => {
   const [loggedInUser] = useContext(UserContext);
   const [result, setResult] = useState({ count: false });
   const { register, handleSubmit } = useForm();
-  const { email, displayName } = JSON.parse(localStorage.getItem("userInfo"));
+  const   userData= JSON.parse(localStorage.getItem("userInfo"))||{};
   const onSubmit = (formData) => {
     const dataform = { ...formData, photoId: loggedInUser.photoId };
-    fetch("http://localhost:5000/addregister", {
+    fetch("https://voleenter-works.herokuapp.com/addregister", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -32,7 +32,7 @@ const Register = () => {
   return (
     <div className="text-center">
       <Link to="/">
-        <img className="mainLogo" src={mainLogo} alt="" />
+        <img loading='lazy' className="mainLogo" src={mainLogo} alt="" />
       </Link>
       <div className="d-flex justify-content-center">
         {loggedInUser.photoId && (
@@ -51,7 +51,7 @@ const Register = () => {
                 className="input_feild"
                 ref={register}
                 placeholder="Full Name"
-                value={displayName}
+                value={userData.displayName}
                 type="text"
                 name="name"
                 id="name"
@@ -63,7 +63,7 @@ const Register = () => {
                 className="input_feild"
                 ref={register}
                 placeholder="Username or Email"
-                value={email}
+                value={userData.email}
                 type="email"
                 name="email"
                 id="email"

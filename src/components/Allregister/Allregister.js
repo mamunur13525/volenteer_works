@@ -12,9 +12,9 @@ const Allregister = () => {
     resultArr: [],
   });
   const [deleted, setDeleted] = useState({});
-  const { email } = JSON.parse(localStorage.getItem("userInfo"));
+  const useData = JSON.parse(localStorage.getItem("userInfo"))||{};
   useEffect(() => {
-    fetch(`http://localhost:5000/registerUser/${email}`)
+    fetch(`https://voleenter-works.herokuapp.com/registerUser/${useData.email}`)
       .then((res) => res.json())
       .then((data) => {
         setRegisterUser({ status: "fetch", resultArr: data });
@@ -23,7 +23,7 @@ const Allregister = () => {
   }, []);
 
   const removeDocument = (event, id) => {
-    fetch(`http://localhost:5000/deleteregister/${id}`, {
+    fetch(`https://voleenter-works.herokuapp.com/deleteregister/${id}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -58,7 +58,7 @@ const Allregister = () => {
           {registerUser.status === "fetch" &&
             JSON.stringify(registerUser.resultArr) === "[]" && (
               <div className="d-flex flex-column align-items-center w-100 mt-5">
-                <img src={Trash} alt="trash" />
+                <img loading='lazy' src={Trash} alt="trash" />
                 <span className='mt-3'>NO Register File Yet!</span>
               </div>
             )}
@@ -76,6 +76,7 @@ const Allregister = () => {
                 <div className="allregister_box ">
                   <div className="img">
                     <img
+                    loading='lazy'
                       className={"humanity_hand"}
                       src={register.photoId}
                       alt=""
