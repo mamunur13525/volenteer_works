@@ -20,6 +20,7 @@ const Allregister = () => {
         setRegisterUser({ status: "fetch", resultArr: data });
       })
       .catch((err) => console.log(err));
+    // eslint-disable-next-line
   }, []);
 
   const removeDocument = (event, id) => {

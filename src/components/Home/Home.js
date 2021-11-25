@@ -63,7 +63,7 @@ const Home = () => {
                 <h3 className="text-center mt-3">Loading</h3>
               </div>
             )}
-            {valunteer.filter((item) => {
+            {valunteer.filter(item => {
               if (searchValue === "") {
                 return item;
               } else if (
@@ -71,6 +71,7 @@ const Home = () => {
               ) {
                 return item;
               }
+              return item;
             }).length === 0 && searchValue !== "" ? (
               <p>No Search Found!</p>
             ) : (
@@ -83,6 +84,7 @@ const Home = () => {
                   ) {
                     return item;
                   }
+                  return item;
                 })
                 .map((volentire, ind) => (
                   <div
@@ -90,7 +92,6 @@ const Home = () => {
                     id={volentire._id}
                     className="col-lg-3 col-md-6 col-sm-12"
                   >
-                    {console.log({ volentire })}
                     <div
                       onClick={handleClick}
                       className="card"
